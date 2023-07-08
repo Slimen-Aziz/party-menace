@@ -9,43 +9,28 @@ interface IGameBase
     IEnumerator IEOnTick();
 }
 
-public class GameBase : MonoBehaviour, IGameBase
+public abstract class GameBase : MonoBehaviour, IGameBase
 {
     [SerializeField]
     protected float gameDuration;
 
-
     public virtual IEnumerator IEOnTick()
     {
-        
         yield return null;
         throw new System.NotImplementedException();
     }
 
-    public virtual void OnFail()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public virtual void OnStart()
-    {
-        throw new System.NotImplementedException();
-    }
+    public abstract void OnStart();
 
     public virtual void OnWin()
     {
-        throw new System.NotImplementedException();
+        GameController.WinGame();
     }
-
-    protected virtual void Start()
+    public virtual void OnFail()
     {
-        
+        GameController.FailGame();
     }
 
-    protected virtual void Update()
-    {
-        
-    }
-
-
+    protected virtual void Start() { }
+    protected virtual void Update() { }
 }
