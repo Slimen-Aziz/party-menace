@@ -15,7 +15,6 @@ namespace MiniGames.Bowling
         [SerializeField] private GameObject trickText;
         [SerializeField] private GameObject strikeText;
         private float _direction = 1;
-        private bool _isThrown;
 
         private BowlingController parent;
 
@@ -64,7 +63,6 @@ namespace MiniGames.Bowling
                 _ballTransform.GetComponent<Animator>().SetTrigger("Throw");
                 _throwMagnitude = ForceMagnitude;
                 _rb.AddForce(Vector2.up * _throwMagnitude, forceMode);
-                _isThrown = true;
             }
         }
 
