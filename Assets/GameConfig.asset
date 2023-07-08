@@ -16,6 +16,4 @@ MonoBehaviour:
   fail: {fileID: 8300000, guid: b22ee57577568ce40a89f391b1e95a02, type: 3}
   baseDuration: 5
   availableGames:
-  - {fileID: 6324982684797604399, guid: f8b3e0e5d090629418266b01e1ec6b14, type: 3}
-  - {fileID: -6191853546652153005, guid: f22cac94d10067c46b9851f3627bda08, type: 3}
-  - {fileID: 1560954562932584895, guid: d770bd23b0ea7fe419079d820e4b03ec, type: 3}
+  - {fileID: 8080705955787893419, guid: e20172da6d226d64eaf905f8c6c5f251, type: 3}

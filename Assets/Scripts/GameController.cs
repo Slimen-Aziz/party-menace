@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     private AudioSource _audioSource;
 
     public GameBase CurrentGame => _currentGame;
-    
+
     private void Awake()
     {
         if(Instance != null) return;

@@ -8,7 +8,8 @@ namespace MiniGames.Bowling
     {
         Prepare,
         Throw,
-        End
+        Success,
+        Fail,
     }
     
     public class BowlingController : GameBase
@@ -43,6 +44,9 @@ namespace MiniGames.Bowling
                 MoveAround();
                 yield return _frame;
             }
+
+            if (state == BowlingState.Success) OnWin();
+            else if (state == BowlingState.Fail) OnFail();
         }
 
         private void MoveAround()

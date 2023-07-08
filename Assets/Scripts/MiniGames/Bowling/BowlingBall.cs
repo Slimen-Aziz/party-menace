@@ -77,12 +77,12 @@ namespace MiniGames.Bowling
             // _rb.velocity = Vector2.zero;
             // _rb.angularVelocity = 0;
             strikeText.SetActive(true);
-            parent.OnFail();
+            parent.state = BowlingState.Fail;
         }
 
         private void OnMouseOver()
         {
-            if(!_isThrown) return;
+            if(parent.state != BowlingState.Throw) return;
             if (Input.GetMouseButtonUp(0))
             {
                 Debug.Log("Ball Is Clicked");
@@ -92,7 +92,7 @@ namespace MiniGames.Bowling
                 _rb.velocity = Vector2.zero;
                 _rb.angularVelocity = 0;
                 _rb.AddForce(direction * _throwMagnitude, forceMode);
-                parent.OnWin();
+                parent.state = BowlingState.Success;
             }
         }
     }
