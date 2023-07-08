@@ -15,10 +15,22 @@ namespace MiniGames.HairPick
         [SerializeField] private bool _isOn;
         private float _direction = 1;
 
+        private Vector3 _mouseOffset;
+
         public void Init()
         {
             _transform = transform;
             _isOn = true;
+        }
+
+        private void OnMouseDown()
+        {
+            _mouseOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+
+        private void OnMouseDrag()
+        {
+            transform.localPosition = _mouseOffset + Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
         private void Update()
