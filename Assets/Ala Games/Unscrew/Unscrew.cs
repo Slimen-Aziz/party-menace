@@ -111,15 +111,6 @@ public class Unscrew : GameBase
         OnWin();
     }
 
-    public override void OnFail()
-    {
-        print("Game Failed");
-    }
-
-    public override void OnWin()
-    {
-        print("Game Won");
-    }
 
     float startTime;
 

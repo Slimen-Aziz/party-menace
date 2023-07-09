@@ -18,7 +18,7 @@ MonoBehaviour:
   availableGames:
   - prefab: {fileID: 8080705955787893419, guid: e20172da6d226d64eaf905f8c6c5f251, type: 3}
     hint: Get a Strike!!
-  - prefab: {fileID: 6956656609133030840, guid: db4cb8fe166b7bc44b07e95a9ea9431e, type: 3}
+  - prefab: {fileID: 6696367296314620051, guid: db4cb8fe166b7bc44b07e95a9ea9431e, type: 3}
     hint: Enjoy The Game
   - prefab: {fileID: 739365926298188099, guid: edfb06e57d8c8404b82c5bebd6d2fc9d, type: 3}
     hint: Don't Press The Button!

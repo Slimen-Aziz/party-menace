@@ -45,6 +45,7 @@ public class WatchTheMovie : GameBase
     public override void OnFail()
     {
         ended = true;
+        base.OnFail();
         print("Game Failed");
     }
 
@@ -55,6 +56,15 @@ public class WatchTheMovie : GameBase
         cassette.transform.DOMoveY(cassette.transform.position.y - 20, 1);
         print("Game Won");
         switchOff?.Play();
+
+
+        StartCoroutine(DelayedCall());
+
+        IEnumerator DelayedCall()
+        {
+            yield return new WaitForSeconds(1);
+            base.OnWin();
+        }
     }
 
     float startTime;

@@ -18,7 +18,7 @@ public class NiceMohawk : GameBase
     private bool shavingLeft, shavingRight, shavingMiddle;
     [SerializeField] private Image timer;
 
-    void Start()
+    public override void OnStart()
     {
         float broY = bro.transform.position.y;
         bro.transform.position += Vector3.down * 64;
@@ -114,16 +114,20 @@ public class NiceMohawk : GameBase
         }
     }
 
-    public override void OnFail()
-    {
-        print("Game Failed");
-    }
-
     public override void OnWin()
     {
         win?.Play();
         tearsOfTheKingdom?.SetActive(true);
         print("Game Won");
+
+
+        StartCoroutine(DelayedCall());
+
+        IEnumerator DelayedCall()
+        {
+            yield return new WaitForSeconds(1);
+            base.OnWin();
+        }
     }
 
     float startTime;

@@ -64,6 +64,7 @@ public class RhythmicMenace : GameBase
     {
         stopped = true;
         print("Game Failed");
+        base.OnFail();
     }
 
     public override void OnWin()
@@ -75,6 +76,15 @@ public class RhythmicMenace : GameBase
         rb.gravityScale = 70;
         rb.angularVelocity = 45;
         print("Game Won");
+
+
+        StartCoroutine(DelayedCall());
+
+        IEnumerator DelayedCall()
+        {
+            yield return new WaitForSeconds(1);
+            base.OnWin();
+        }
     }
 
     public void DisableVolume()

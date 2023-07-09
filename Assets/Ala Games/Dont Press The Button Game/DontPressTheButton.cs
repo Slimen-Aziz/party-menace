@@ -42,6 +42,7 @@ public class DontPressTheButton : GameBase
     
     public override void OnFail()
     {
+        base.OnFail();
         stopped = true;
         print("Game Failed");
     }
@@ -52,6 +53,14 @@ public class DontPressTheButton : GameBase
         print("Game Won");
         boomEffect.SetActive(true);
         boom?.Play();
+
+        StartCoroutine(DelayedCall());
+
+        IEnumerator DelayedCall()
+        {
+            yield return new WaitForSeconds(1);
+            base.OnWin();
+        }
     }
 
     float startTime;

@@ -58,11 +58,6 @@ public class NoDateForYou : GameBase
         }
     }
 
-    public override void OnFail()
-    {
-        print("Game Failed");
-    }
-
     public override void OnWin()
     {
         print("Game Won");
@@ -75,6 +70,9 @@ public class NoDateForYou : GameBase
             yield return new WaitForSeconds(2);
 
             wonJingle?.Play();
+            yield return new WaitForSeconds(1);
+
+            base.OnWin();
         }
     }
 
