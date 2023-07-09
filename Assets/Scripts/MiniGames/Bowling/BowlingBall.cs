@@ -13,6 +13,7 @@ namespace MiniGames.Bowling
         [SerializeField] private ForceMode2D forceMode;
         [SerializeField] private bool isTricky;
         [SerializeField] private GameObject trickText;
+        [SerializeField] private GameObject strikeObject;
         [SerializeField] private GameObject strikeText;
         private float _direction = 1;
 
@@ -23,12 +24,14 @@ namespace MiniGames.Bowling
 
         private float ForceMagnitude => forceMagnitude * Random.value + 2;
         private float _throwMagnitude = 0;
+        [SerializeField] private float blinkInterval;
+        [SerializeField] private int blinkingAmount;
 
         public void Init(BowlingController mainGame)
         {
             parent = mainGame;
             trickText.SetActive(false);
-            strikeText.SetActive(false);
+            strikeObject.SetActive(false);
             _rb = GetComponent<Rigidbody2D>();
             _ballTransform = transform;
         }
@@ -74,8 +77,30 @@ namespace MiniGames.Bowling
             // _ballTransform.GetComponent<Animator>().SetTrigger("Strike");
             // _rb.velocity = Vector2.zero;
             // _rb.angularVelocity = 0;
-            strikeText.SetActive(true);
+            strikeObject.SetActive(true);
+            BlinkText();
             parent.state = BowlingState.Fail;
+        }
+
+        private void BlinkText()
+        {
+            StartCoroutine(_BlinkText());
+
+            IEnumerator _BlinkText()
+            {
+                var waitForSeconds = new WaitForSeconds(blinkInterval);
+                var counter = 0;
+                var status = false;
+            
+                while (counter < blinkingAmount)
+                {
+                    strikeText.SetActive(status);
+                    status = !status;
+                    counter++;
+                    yield return waitForSeconds;
+                }
+                strikeText.SetActive(true);
+            }
         }
 
         private void OnMouseOver()
