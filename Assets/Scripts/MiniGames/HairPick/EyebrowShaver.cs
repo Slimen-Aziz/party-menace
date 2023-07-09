@@ -12,9 +12,16 @@ namespace MiniGames.HairPick
         [SerializeField] private float delay;
         private float _lastOnTime;
         [SerializeField] private GameObject tear;
+        private float _elapsedTime;
+
+        protected override void Start()
+        {
+            tear.SetActive(false);
+        }
 
         public override void OnStart()
         {
+            Debug.Log("Start");
             var transform1 = middleEyeBrow.transform;
             var yPoint =  transform1.localPosition.y - transform1.localScale.y * .5f;
             shaver.Init(yPoint);
@@ -22,14 +29,18 @@ namespace MiniGames.HairPick
             rightEyeBrow.Init();
             middleEyeBrow.Init();
             StartCoroutine(IEOnTick());
-            tear.SetActive(false);
+        }
+
+        public void EndGame()
+        {
+            _elapsedTime = gameDuration + 1;
         }
 
         public override IEnumerator IEOnTick()
         {
-            var startGameTime = Time.time;
-            while (Time.time < startGameTime + gameDuration)
+            while (_elapsedTime < gameDuration)
             {
+                _elapsedTime += Time.deltaTime;
                 var turnChance = Random.value > .25f;
                 if (turnChance && Time.time >= _lastOnTime + delay)
                 {
@@ -48,8 +59,9 @@ namespace MiniGames.HairPick
             var isMiddleGone = middleEyeBrow.IsShaved();
             if (isMiddleGone)
             {
-                if(isLeftOrRightGone) OnFail();
-                else OnWin();
+                if(isLeftOrRightGone) OnWin();
+                else OnFail();
+                yield break;
             }
 
             OnFail();

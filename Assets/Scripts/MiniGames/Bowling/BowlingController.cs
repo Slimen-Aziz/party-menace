@@ -49,11 +49,6 @@ namespace MiniGames.Bowling
             if (state == BowlingState.Success) OnWin();
             else if (state == BowlingState.Fail) OnFail();
         }
-        
-        public void EndGame()
-        {
-            _elapsedTime = gameDuration;
-        }
 
         private void MoveAround()
         {
@@ -70,6 +65,7 @@ namespace MiniGames.Bowling
 
         public void KnockPins()
         {
+            if (state != BowlingState.Throw) return;
             strikeSFX.time = 0.3f;
             strikeSFX.Play();
             for (int index = 0; index < pins.Count; index++)

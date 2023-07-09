@@ -44,14 +44,15 @@ namespace MiniGames.HairPick
             for (int i = 0; i < shaveAmount; i++)
             {
                 _index++;
-                if(_index >= hairAmount) return;
+                if(_index >= hairAmount) break;
                 Debug.Log("Shave");
                 _hairs[_index].GetComponent<SpriteRenderer>().sprite = cutHair;
             }
             
             if(turnOff) return;
-            if (_index >= hairAmount) (GameController.Instance.CurrentGame as BowlingController)?.EndGame();
+            if (_index >= hairAmount) (GameController.Instance.CurrentGame as EyebrowShaver)?.EndGame();
         }
+
 
         public bool IsShaved()
         {

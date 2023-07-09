@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -22,14 +24,24 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private float healthBlinkingAmount;
 
     [SerializeField] private TextMeshProUGUI hint;
-    
+
+    [SerializeField] private Button restartButton;
+    [SerializeField] private GameObject restartMenu;
+
     private int _index;
 
     public void Init()
     {
+        restartMenu.SetActive(false);
         startButton.onClick.AddListener(StartGame);
+        restartButton.onClick.AddListener(RestartGame);
         TransitionOut(null);
         hint.text = "";
+    }
+
+    private void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void StartGame()
@@ -113,6 +125,7 @@ public class MainMenu : MonoBehaviour
 
     private void LoseGame()
     {
+        restartMenu.SetActive(true);
     }
 
     public void HideHealth(Action inCallback)
