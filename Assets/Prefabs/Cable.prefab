@@ -375,7 +375,7 @@ Transform:
   - {fileID: 4734287474469244846}
   - {fileID: 2997957066707356699}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3957449002644400597
 MonoBehaviour:
@@ -398,6 +398,13 @@ MonoBehaviour:
   - {fileID: 2678226366855829496}
   - {fileID: 4568291602796283834}
   - {fileID: 3710120625790905408}
+  _rigidBodies:
+  - {fileID: 6557655663566401586}
+  - {fileID: 9137294551788913331}
+  - {fileID: 1020700418688054821}
+  - {fileID: 602174657048641762}
+  - {fileID: 5563723692393055718}
+  - {fileID: 5360697809447215915}
 --- !u!1 &8293645811385384798
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,11 +483,11 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -0.55, z: 0}
+  - {x: 0, y: -1.5, z: 0}
+  - {x: 0, y: -2, z: 0}
+  - {x: 0, y: -2.5, z: 0}
+  - {x: 0, y: -3, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1

@@ -105,6 +105,7 @@ namespace MiniGames.Bowling
 
         private void OnMouseOver()
         {
+            if (parent == null) return;
             if(parent.state != BowlingState.Throw) return;
             if (Input.GetMouseButtonUp(0))
             {

@@ -9,20 +9,20 @@ namespace Elements
         [SerializeField] private LineRenderer line;
         [SerializeField] private HingeJoint2D[] joints;
 
-        private Rigidbody2D[] _rigidBodies;
+        [SerializeField] private Rigidbody2D[] _rigidBodies;
 
-        private void Start()
-        {
-            line.positionCount = joints.Length;
-            line.startWidth = cableWidth;
-            _rigidBodies = new Rigidbody2D[joints.Length];
-            for (var i = 0; i < joints.Length; i++)
-            {
-                _rigidBodies[i] = joints[i].GetComponent<Rigidbody2D>();
-                if (i == 0) continue;
-                joints[i].connectedBody = _rigidBodies[i - 1];
-            }
-        }
+        //private void Start()
+        //{
+        //    line.positionCount = joints.Length;
+        //    line.startWidth = cableWidth;
+        //    _rigidBodies = new Rigidbody2D[joints.Length];
+        //    for (var i = 0; i < joints.Length; i++)
+        //    {
+        //        _rigidBodies[i] = joints[i].GetComponent<Rigidbody2D>();
+        //        if (i == 0) continue;
+        //        joints[i].connectedBody = _rigidBodies[i - 1];
+        //    }
+        //}
         
         private void Update()
         {
