@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Analytics;
 
 public class NoDateForYou : GameBase
 {
@@ -23,9 +24,10 @@ public class NoDateForYou : GameBase
 
     public override void OnStart()
     {
-        StartCoroutine(IEOnTick());
+        var cor = StartCoroutine(IEOnTick());
         sendButton.onClick.AddListener(delegate
         {
+            if (ended) return;
             click?.Play();
             delayMessages?.SetActive(false);
             oldMessages?.SetActive(false);
@@ -33,19 +35,20 @@ public class NoDateForYou : GameBase
             messageField?.SetActive(false);
 
 
-            StopAllCoroutines();
+            StopCoroutine(cor);
             OnFail();
         });
 
         cancelButton.onClick.AddListener(delegate
         {
+            if (ended) return;
             click?.Play();
             powerOff?.Play();
 
             overlayTop.DOScaleY(1, 0.1f).SetEase(Ease.Linear);
             overlayBottom.DOScaleY(1, 0.1f).SetEase(Ease.Linear);
 
-            StopAllCoroutines();
+            StopCoroutine(cor);
             OnWin();
         });
     }
@@ -60,6 +63,7 @@ public class NoDateForYou : GameBase
 
     public override void OnWin()
     {
+        ended = true;
         print("Game Won");
         StartCoroutine(PlaySounds());
 
@@ -74,6 +78,12 @@ public class NoDateForYou : GameBase
 
             base.OnWin();
         }
+    }
+
+    public override void OnFail()
+    {
+        ended = true;
+        base.OnFail();
     }
 
     float startTime;

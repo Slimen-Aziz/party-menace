@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,9 +24,11 @@ public class RhythmicMenace : GameBase
     private bool started = false;
     private bool stopped = false;
 
+    private Coroutine cor;
+
     public override void OnStart()
     {
-        StartCoroutine(IEOnTick());
+        cor = StartCoroutine(IEOnTick());
 
         arrow = Random.Range(0, 4);
         note.sprite = arrows[arrow];
@@ -45,7 +48,7 @@ public class RhythmicMenace : GameBase
                 ended = true;
                 won = false;
                 OnFail();
-                StopAllCoroutines();
+                StopCoroutine(cor);
                 break;
             }
             else  if (Input.GetKeyDown(key) && key != arrowsKeys[arrow])
@@ -53,7 +56,7 @@ public class RhythmicMenace : GameBase
                 ended = true;
                 won = true;
                 OnWin();
-                StopAllCoroutines();
+                StopCoroutine(cor);
                 break;
             }
         }

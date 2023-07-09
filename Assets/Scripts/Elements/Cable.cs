@@ -11,7 +11,7 @@ namespace Elements
 
         private Rigidbody2D[] _rigidBodies;
 
-        private void OnValidate()
+        private void Start()
         {
             line.positionCount = joints.Length;
             line.startWidth = cableWidth;

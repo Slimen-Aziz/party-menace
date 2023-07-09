@@ -9,10 +9,16 @@ namespace DisconnectGame
         [SerializeField] private Football ball;
         [SerializeField] private AudioSource source;
         [SerializeField] private AudioClip kickEffect;
+        [SerializeField] private Canvas canvas;
         
         private WaitForSeconds _second;
         private Coroutine _routine;
-    
+
+        private void Start()
+        {
+            canvas.worldCamera = Camera.main;
+        }
+
         public override void OnStart()
         {
             ball.OnReachGoal += ReachedGoal;

@@ -671,7 +671,7 @@ Transform:
   - {fileID: 665342212693935533}
   - {fileID: 7415319970586388677}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5940519306986616681
 MonoBehaviour:
@@ -689,6 +689,7 @@ MonoBehaviour:
   ball: {fileID: 8869197759777560390}
   source: {fileID: 5383787939278830637}
   kickEffect: {fileID: 8300000, guid: 3c87457350e455d44b404a97cbf419ad, type: 3}
+  canvas: {fileID: 656541851827257114}
 --- !u!1 &6824739642318324539
 GameObject:
   m_ObjectHideFlags: 0

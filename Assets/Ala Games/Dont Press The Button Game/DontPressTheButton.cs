@@ -21,18 +21,19 @@ public class DontPressTheButton : GameBase
 
     public override void OnStart()
     { 
-        StartCoroutine(IEOnTick());
+        var cor = StartCoroutine(IEOnTick());
 
         theButton.onClick.AddListener(delegate{
             if (stopped) return;
-           OnWin();
-           StopAllCoroutines();
+            OnWin();
+            StopCoroutine(cor);
         });
 
     }
 
     protected override void Update()
     {
+        if (stopped) return;
         if (started)
         {
             timer.fillAmount = 1 - Time.time / (startTime + gameDuration);
@@ -54,13 +55,16 @@ public class DontPressTheButton : GameBase
         boomEffect.SetActive(true);
         boom?.Play();
 
-        StartCoroutine(DelayedCall());
 
         IEnumerator DelayedCall()
         {
             yield return new WaitForSeconds(1);
+            print("Check");
             base.OnWin();
         }
+
+        StartCoroutine(DelayedCall());
+
     }
 
     float startTime;
@@ -76,7 +80,5 @@ public class DontPressTheButton : GameBase
         yield return null;
 
         OnFail();
-
-
     }
 }

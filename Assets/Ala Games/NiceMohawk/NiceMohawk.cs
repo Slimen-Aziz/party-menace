@@ -17,13 +17,14 @@ public class NiceMohawk : GameBase
     [SerializeField] private GameObject tearsOfTheKingdom;
     private bool shavingLeft, shavingRight, shavingMiddle;
     [SerializeField] private Image timer;
+    private Coroutine cor;
 
     public override void OnStart()
     {
         float broY = bro.transform.position.y;
         bro.transform.position += Vector3.down * 64;
         bro.DOMoveY(broY, 1);
-        StartCoroutine(IEOnTick());
+        cor = StartCoroutine(IEOnTick());
     }
 
     private bool ended = false;
@@ -103,14 +104,14 @@ public class NiceMohawk : GameBase
         {
             ended = true;
             OnFail();
-            StopAllCoroutines();
+            StopCoroutine(cor);
         }
 
         if (midHair.localScale.y <= 0)
         {
             ended = true;
             OnWin();
-            StopAllCoroutines();
+            StopCoroutine(cor);
         }
     }
 

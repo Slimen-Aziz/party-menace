@@ -28,10 +28,9 @@ public class Unscrew : GameBase
 
     public override void OnStart()
     {
-            bottomImage = screwBottom.GetComponent<Image>();
+        bottomImage = screwBottom.GetComponent<Image>();
         topImage = screwTop.GetComponent<Image>();
         StartCoroutine(IEOnTick());
-
     }
 
     public void Unscrewing(bool state)
@@ -44,17 +43,18 @@ public class Unscrew : GameBase
         screwing = state;
     }
 
-    protected override void Update()
+    protected void Update()
     {
         if (ended)
         {
             return;
         }
-        
+
         if (started)
         {
             timer.fillAmount = 1 - Time.time / (startTime + gameDuration);
         }
+        else return;
 
         Vector2 movePos;
 

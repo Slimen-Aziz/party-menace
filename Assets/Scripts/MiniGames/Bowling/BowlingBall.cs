@@ -63,7 +63,7 @@ namespace MiniGames.Bowling
             IEnumerator _ThrowBall()
             {
                 yield return null;
-                _ballTransform.GetComponent<Animator>().SetTrigger("Throw");
+                _ballTransform.GetComponent<Animator>().Play("bowling_ball");
                 _throwMagnitude = ForceMagnitude;
                 _rb.AddForce(Vector2.up * _throwMagnitude, forceMode);
             }

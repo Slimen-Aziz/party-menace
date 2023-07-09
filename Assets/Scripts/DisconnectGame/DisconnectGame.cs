@@ -20,18 +20,23 @@ namespace DisconnectGame
         private WaitForSeconds _second;
         private Coroutine _routine;
 
+        private void Start()
+        {
+            gameCanvas.worldCamera = Camera.main;
+            gameCanvas.planeDistance = 1;
+            draggableHolder.OnConnect += cable.Connect;
+            draggableHolder.OnDisconnect += DisconnectCable;
+            draggableHolder.AttachElement(draggable);
+        }
+
         public override void OnStart()
         {
+            _second = new WaitForSeconds(1);
+            _routine = StartCoroutine(IEOnTick());
             source.clip = gameSound;
             source.Play();
             gameView.alpha = 1f;
             staticView.alpha = 0f;
-            gameCanvas.worldCamera = Camera.main;
-            draggableHolder.OnConnect += cable.Connect;
-            draggableHolder.OnDisconnect += DisconnectCable;
-            draggableHolder.AttachElement(draggable);
-            _second = new WaitForSeconds(1);
-            _routine = StartCoroutine(IEOnTick());
         }
 
         private void DisconnectCable()

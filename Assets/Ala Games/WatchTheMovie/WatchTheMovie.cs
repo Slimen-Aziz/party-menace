@@ -20,12 +20,12 @@ public class WatchTheMovie : GameBase
     private bool started = false;
 
    public override void OnStart(){
-        StartCoroutine(IEOnTick());
+        var cor = StartCoroutine(IEOnTick());
 
         eject.onClick.AddListener(delegate{
             if(ended) return;
            OnWin();
-           StopAllCoroutines();
+            StopCoroutine(cor);
         });
     }
     
