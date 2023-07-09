@@ -5,15 +5,12 @@ namespace MiniGames.HairPick
 {
     public class Shaver : MonoBehaviour
     {
-        [SerializeField] private float coverSpeed;
-        [SerializeField] private float xRange;
         [SerializeField] private SpriteRenderer powerButton;
         [SerializeField] private Sprite onSprite;
         [SerializeField] private Sprite offSprite;
 
         [SerializeField] private float movementSpeed;
 
-        [SerializeField] private Transform bladeCover;
         [SerializeField] private bool _isOn;
         private float _xDirection = 1;
         private Rigidbody2D _rb;
@@ -24,6 +21,7 @@ namespace MiniGames.HairPick
         [SerializeField] private Vector2 _startPosition;
         [SerializeField] private float _targetYPosition;
         [SerializeField] private float sizeOffset;
+        private bool _isDragging;
 
         public void Init(float targetPosition)
         {
@@ -36,12 +34,14 @@ namespace MiniGames.HairPick
         private void OnMouseDown()
         {
             if(!IsOn) return;
+            _isDragging = true;
             _mouseOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
         private void OnMouseDrag()
         {
             if(!IsOn) return;
+            if(!_isDragging) return;
             _rb.position = _mouseOffset + Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
@@ -53,19 +53,9 @@ namespace MiniGames.HairPick
                 return;
             }
 
-            AnimateBlade();
             ShaveDown();
         }
 
-        private void AnimateBlade()
-        {
-            var newPosition = bladeCover.localPosition;
-            newPosition.x += _xDirection * coverSpeed * Time.deltaTime;
-            bladeCover.localPosition = newPosition;
-            if (newPosition.x >= xRange)
-                _xDirection = -1;
-            else if (newPosition.x < -xRange) _xDirection = 1;
-        }
 
         private void PullBackUp()
         {
@@ -112,7 +102,6 @@ namespace MiniGames.HairPick
             Debug.Log("Turn On!");
             _isOn = true;
             powerButton.sprite = onSprite;
-            ResetShaver();
         }
 
         public void TurnOff()
@@ -120,14 +109,7 @@ namespace MiniGames.HairPick
             Debug.Log("Turn Off!");
             _isOn = false;
             powerButton.sprite = offSprite;
-            ResetShaver();
-        }
-
-        private void ResetShaver()
-        {
-            var position = bladeCover.localPosition;
-            position.x = 0;
-            bladeCover.localPosition = position;
+            _isDragging = false;
         }
     }
 }
