@@ -50,7 +50,6 @@ namespace MiniGames.Bowling
             else if (state == BowlingState.Fail) OnFail();
         }
         
-        
         public void EndGame()
         {
             _elapsedTime = gameDuration;

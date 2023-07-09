@@ -22,9 +22,11 @@ namespace MiniGames.HairPick
         [SerializeField] private float _targetYPosition;
         [SerializeField] private float sizeOffset;
         private bool _isDragging;
+        private AudioSource _audioSource;
 
         public void Init(float targetPosition)
         {
+            _audioSource = GetComponent<AudioSource>();
             _rb = GetComponent<Rigidbody2D>();
             TurnOff();
             _startPosition = _rb.position;
@@ -102,11 +104,14 @@ namespace MiniGames.HairPick
             Debug.Log("Turn On!");
             _isOn = true;
             powerButton.sprite = onSprite;
+            _audioSource.time = 0;
+            _audioSource.Play();
         }
 
         public void TurnOff()
         {
             Debug.Log("Turn Off!");
+            _audioSource.Stop();
             _isOn = false;
             powerButton.sprite = offSprite;
             _isDragging = false;

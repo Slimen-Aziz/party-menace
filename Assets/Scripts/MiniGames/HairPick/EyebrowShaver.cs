@@ -22,6 +22,7 @@ namespace MiniGames.HairPick
             rightEyeBrow.Init();
             middleEyeBrow.Init();
             StartCoroutine(IEOnTick());
+            tear.SetActive(false);
         }
 
         public override IEnumerator IEOnTick()
