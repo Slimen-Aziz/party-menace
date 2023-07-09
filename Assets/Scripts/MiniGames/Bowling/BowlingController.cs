@@ -19,6 +19,7 @@ namespace MiniGames.Bowling
         [SerializeField] private float throwBallTime;
         [SerializeField] private float _elapsedTime = 0;
         private WaitForEndOfFrame _frame = new WaitForEndOfFrame();
+        [SerializeField] private AudioSource strikeSFX;
 
         public BowlingState state;
         
@@ -70,6 +71,8 @@ namespace MiniGames.Bowling
 
         public void KnockPins()
         {
+            strikeSFX.time = 0.3f;
+            strikeSFX.Play();
             for (int index = 0; index < pins.Count; index++)
             {
                 var pin = pins[index];
