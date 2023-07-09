@@ -14,8 +14,12 @@ namespace MiniGames.HairPick
         [SerializeField] private float xSpread;
         [SerializeField] private float ySpread;
         [SerializeField] private float rotation;
-
+        [SerializeField] private bool turnOff;
+        [SerializeField] private int shaveAmount;
+        
+        public bool TurnOff => turnOff;
         private List<Transform> _hairs;
+        private int _index;
 
         public void Init()
         {
@@ -30,36 +34,24 @@ namespace MiniGames.HairPick
                 item.localPosition = new Vector3(Random.Range(-xSpread, xSpread), Random.Range(-ySpread, ySpread), 0);
                 item.rotation = Quaternion.Euler(0, 0, Random.Range(-1f, 1f) * rotation);
             }
+
+            _index = 0;
         }
 
-        private void CreateHair()
+        public void ShaveHair()
         {
+            for (int i = 0; i < shaveAmount; i++)
+            {
+                _index++;
+                if(_index >= hairAmount) return;
+                Debug.Log("Shave");
+                _hairs[_index].GetComponent<SpriteRenderer>().sprite = cutHair;
+            }
         }
 
-        private void Update()
+        public bool IsShaved()
         {
-            return;
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                if (_hairs != null)
-                {
-                    foreach (var hair in _hairs)
-                    {
-                        Destroy(hair.gameObject);
-                    }
-                }
-
-                _hairs = new List<Transform>();
-                Init();
-            }
-
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                foreach (var hair in _hairs)
-                {
-                    hair.GetComponent<SpriteRenderer>().sprite = cutHair;
-                }
-            }
+            return _index >= hairAmount / 2;
         }
     }
 }
