@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Elements
 {
+    [ExecuteInEditMode]
     public class Cable : MonoBehaviour
     {
         [SerializeField] private float cableWidth;
@@ -22,7 +23,7 @@ namespace Elements
                 joints[i].connectedBody = _rigidBodies[i - 1];
             }
         }
-
+        
         private void Update()
         {
             for (var i = 0; i < joints.Length; i++) 
