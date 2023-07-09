@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - DraggableHolder
+  - Football
   layers:
   - Default
   - TransparentFX
@@ -40,4 +42,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Cable
+    uniqueID: 4043674401
+    locked: 0
+  - name: MiniGame
+    uniqueID: 2946475111
     locked: 0
