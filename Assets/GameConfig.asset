@@ -16,4 +16,7 @@ MonoBehaviour:
   fail: {fileID: 8300000, guid: b22ee57577568ce40a89f391b1e95a02, type: 3}
   baseDuration: 5
   availableGames:
-  - {fileID: 8080705955787893419, guid: e20172da6d226d64eaf905f8c6c5f251, type: 3}
+  - prefab: {fileID: 8080705955787893419, guid: e20172da6d226d64eaf905f8c6c5f251, type: 3}
+    hint: Get a Strike!!
+  - prefab: {fileID: 3388184353148565103, guid: 1be3c426d4bbfc94685e2c5c68809e36, type: 3}
+    hint: Remove the Unibrow.
