@@ -19,7 +19,7 @@ public class WatchTheMovie : GameBase
     private bool ended;
     private bool started = false;
 
-    void Start(){
+   public override void OnStart(){
         StartCoroutine(IEOnTick());
 
         eject.onClick.AddListener(delegate{
@@ -71,7 +71,5 @@ public class WatchTheMovie : GameBase
         yield return null;
 
         OnFail();
-
-
     }
 }

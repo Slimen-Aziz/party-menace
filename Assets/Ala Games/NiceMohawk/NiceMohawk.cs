@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class NiceMohawk : GameBase
 {
-    private Canvas canvas => GetComponent<Canvas>();
+    private Canvas canvas => transform.GetChild(0).GetComponent<Canvas>();
     [SerializeField] private RectTransform leftHair, midHair, rightHair;
 
     [SerializeField] private AudioSource buzzing, win;

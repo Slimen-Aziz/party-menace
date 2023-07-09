@@ -13,8 +13,6 @@ public class RhythmicMenace : GameBase
 
     [SerializeField] List<Image> ticks;
 
-    [SerializeField] GameObject screenOverlay;
-
     [SerializeField] float delay = 2;
     [SerializeField] private Image timer;
 
@@ -23,8 +21,9 @@ public class RhythmicMenace : GameBase
 
     private int arrow;
     private bool started = false;
+    private bool stopped = false;
 
-    protected override void Start()
+    public override void OnStart()
     {
         StartCoroutine(IEOnTick());
 
@@ -34,6 +33,7 @@ public class RhythmicMenace : GameBase
 
     void Update()
     {
+        if (stopped) return;
         if (started)
         {
             timer.fillAmount = 1 - Time.time / (startTime + gameDuration);
@@ -62,16 +62,18 @@ public class RhythmicMenace : GameBase
 
     public override void OnFail()
     {
-       
+        stopped = true;
         print("Game Failed");
     }
 
     public override void OnWin()
     {
+        stopped = true;
         var rb = note.AddComponent<Rigidbody2D>();
+        note.color = Color.red;
+        if (rb == null) return;
         rb.gravityScale = 70;
         rb.angularVelocity = 45;
-        note.color = Color.red;
         print("Game Won");
     }
 

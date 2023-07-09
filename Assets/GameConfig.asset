@@ -18,5 +18,19 @@ MonoBehaviour:
   availableGames:
   - prefab: {fileID: 8080705955787893419, guid: e20172da6d226d64eaf905f8c6c5f251, type: 3}
     hint: Get a Strike!!
-  - prefab: {fileID: 3388184353148565103, guid: 1be3c426d4bbfc94685e2c5c68809e36, type: 3}
-    hint: Remove the Unibrow.
+  - prefab: {fileID: 6956656609133030840, guid: db4cb8fe166b7bc44b07e95a9ea9431e, type: 3}
+    hint: Enjoy The Game
+  - prefab: {fileID: 739365926298188099, guid: edfb06e57d8c8404b82c5bebd6d2fc9d, type: 3}
+    hint: Don't Press The Button!
+  - prefab: {fileID: 7171618081533543008, guid: ff9a0618421cccb46a0c070cd627f52f, type: 3}
+    hint: Go on a date!
+  - prefab: {fileID: 6928738091706422322, guid: 639f90d6824c1f74793b2cbefbefe9f2, type: 3}
+    hint: Give Me A Nice Mohawk!
+  - prefab: {fileID: 5940519306986616681, guid: 6ed8ac5c58d274e4d95e0a17babf31ec, type: 3}
+    hint: Score The Goal!
+  - prefab: {fileID: 3129211912010889156, guid: 6c8e0ca32e883684d9fc99ffe3af74d4, type: 3}
+    hint: Play the Note!
+  - prefab: {fileID: 700772485988089543, guid: 0af7893f4509599419c3e867d2e61017, type: 3}
+    hint: Screw it to the wall!
+  - prefab: {fileID: 149747505001540955, guid: 74658a4870c53b249b03b4c24977c871, type: 3}
+    hint: Watch the movies!

@@ -16,12 +16,15 @@ public class DontPressTheButton : GameBase
     [SerializeField] private Image timer;
 
     private bool started = false;
+    private bool stopped = false;
 
-    
-    void Start(){
+
+    public override void OnStart()
+    { 
         StartCoroutine(IEOnTick());
 
         theButton.onClick.AddListener(delegate{
+            if (stopped) return;
            OnWin();
            StopAllCoroutines();
         });
@@ -39,11 +42,13 @@ public class DontPressTheButton : GameBase
     
     public override void OnFail()
     {
+        stopped = true;
         print("Game Failed");
     }
 
     public override void OnWin()
     {
+        stopped = true;
         print("Game Won");
         boomEffect.SetActive(true);
         boom?.Play();

@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -63,7 +62,7 @@ public class MainMenu : MonoBehaviour
     {
         canvasGroup.DOFade(0, fadeDuration).OnComplete(() =>
         {
-            canvasGroup.interactable = true;
+            canvasGroup.interactable = false;
             hint.text = "";
             inCallback?.Invoke();
         });
@@ -74,6 +73,7 @@ public class MainMenu : MonoBehaviour
         canvasGroup.interactable = false;
         canvasGroup.DOFade(1, fadeDuration).OnComplete(() =>
         {
+            canvasGroup.interactable = true;
             inCallback?.Invoke();
         });
     }

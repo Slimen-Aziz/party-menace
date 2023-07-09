@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1699db7d492286f4f9314f33bed203f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDuration: 60
+  gameDuration: 5
   draggable: {fileID: 2042241570330835713}
   draggableHolder: {fileID: 1363586852236879541}
   cable: {fileID: 6336855679698544987}

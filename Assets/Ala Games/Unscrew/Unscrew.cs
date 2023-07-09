@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class Unscrew : GameBase
 {
     [SerializeField] private Sprite screwedSprite, unscrewedSprite;
-    private Canvas canvas => GetComponent<Canvas>();
+    private Canvas canvas => transform.GetChild(0).GetComponent<Canvas>();
     [SerializeField] private RectTransform screwBottom, screwTop;
     [SerializeField] private Transform screwdriver;
     [SerializeField] private AudioSource win;
@@ -26,9 +26,9 @@ public class Unscrew : GameBase
     private bool ended = false;
     private bool started = false;
 
-    protected override void Start()
+    public override void OnStart()
     {
-        bottomImage = screwBottom.GetComponent<Image>();
+            bottomImage = screwBottom.GetComponent<Image>();
         topImage = screwTop.GetComponent<Image>();
         StartCoroutine(IEOnTick());
 

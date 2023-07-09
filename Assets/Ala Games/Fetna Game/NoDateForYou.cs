@@ -21,7 +21,7 @@ public class NoDateForYou : GameBase
     [SerializeField] bool won;
 
 
-    private void Start()
+    public override void OnStart()
     {
         StartCoroutine(IEOnTick());
         sendButton.onClick.AddListener(delegate
