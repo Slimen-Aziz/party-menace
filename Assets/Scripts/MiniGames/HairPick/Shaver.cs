@@ -47,6 +47,7 @@ namespace MiniGames.HairPick
 
         private void Update()
         {
+            if(_rb == null) return;
             if (!_isOn)
             {
                 PullBackUp();
@@ -55,7 +56,6 @@ namespace MiniGames.HairPick
 
             ShaveDown();
         }
-
 
         private void PullBackUp()
         {

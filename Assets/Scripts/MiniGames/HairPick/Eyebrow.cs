@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MiniGames.Bowling;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -47,6 +48,9 @@ namespace MiniGames.HairPick
                 Debug.Log("Shave");
                 _hairs[_index].GetComponent<SpriteRenderer>().sprite = cutHair;
             }
+            
+            if(turnOff) return;
+            if (_index >= hairAmount) (GameController.Instance.CurrentGame as BowlingController)?.EndGame();
         }
 
         public bool IsShaved()
