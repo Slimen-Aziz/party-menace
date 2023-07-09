@@ -104,8 +104,15 @@ public class MainMenu : MonoBehaviour
             
             yield return waitForSeconds;
             _index++;
-            HideHealth(null);
+            if (_index >= healthIcons.Length)
+                LoseGame();
+            else
+                HideHealth(null);
         }
+    }
+
+    private void LoseGame()
+    {
     }
 
     public void HideHealth(Action inCallback)
