@@ -20,7 +20,10 @@ public abstract class GameBase : MonoBehaviour, IGameBase
         throw new System.NotImplementedException();
     }
 
-    public abstract void OnStart();
+    public virtual void OnStart()
+    {
+
+    }
 
     public virtual void OnWin()
     {
